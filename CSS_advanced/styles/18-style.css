@@ -132,7 +132,7 @@ a:active {
     padding: var(--footer-padding);
 }
 
-.nav-menu {
+.navbar-menu {
     float: right;
 }
 
@@ -158,5 +158,5 @@ a:active {
 }
 
 .nav .nav-link:hover {
-    background-color: var(--nav-item-link-hover);
+    color: var(--nav-item-link-hover);
 }
