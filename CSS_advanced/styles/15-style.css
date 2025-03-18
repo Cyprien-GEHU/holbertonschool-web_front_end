@@ -29,7 +29,7 @@
     --section-title-color: var(--color-black);
 }
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -65,7 +65,7 @@ a:hover {
 }
 
 a:active {
-    color: var(--color-light-grey)
+    background-color: var(--color-light-grey);
 }
 
 .visually-hidden {
@@ -73,7 +73,7 @@ a:active {
 }
 
 .card-category {
-    background-color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .section-header {
