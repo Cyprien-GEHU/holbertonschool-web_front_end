@@ -181,7 +181,7 @@ a:active {
 .card-testimonial .card-quote cite {
     display: block;
     padding-top: 1rem;
-    color: var(--color-primary)
+    color: var(--color-primary);
 }
 
 .card-work .card-outer {
@@ -219,7 +219,7 @@ a:active {
 .card-work .card-title a {
     display: block;
     text-decoration: none;
-    padding: 45%;
+    padding-top: 45%;
 }
 
 .card-work .card-title a::after {
