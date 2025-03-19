@@ -187,8 +187,8 @@ a:active {
     top: -4.5rem;
     left: -1rem;
     color: #efeded;
-    size: 10rem;
-    z-index: 1;
+    font-size: 10rem;
+    z-index: -1;
 }
 
 .card-testimonial .card-avatar {
