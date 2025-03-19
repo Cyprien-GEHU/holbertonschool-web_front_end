@@ -99,7 +99,7 @@ html {
 
 .header-logo a {
     display: var(--header-logo-link-display);
-    position: var(--header-logo-position);
+    position: var(--header-logo-link-position);
     top: var(--header-logo-link-top);
     left: var(--header-logo-link-left);
 }
@@ -222,15 +222,15 @@ a:active {
     margin: var(--section-tagline-margin);
 }
 
-.selection-hero {
+.section-hero {
     background-size: 90rem auto;
 }
 
-.selection-hero .section-title {
+.section-hero .section-title {
     margin-bottom: 5rem;
 }
 
-.selection-hero .selection-inner {
+.section-hero .section-inner {
     padding: 10rem 40rem 2rem, 0;
 }
 
