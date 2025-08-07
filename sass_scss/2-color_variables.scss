@@ -1,0 +1,17 @@
+/* we assign the tags body and p with the text color "#3D3D3D" 
+and body and h2 the background color with "#6D6D6D"*/
+$text_color: #3D3D3D;
+$background_color: #6D6D6D;
+
+body {
+    color: $text_color;
+    background-color: $background_color;
+}
+
+p {
+    color: $text_color;
+}
+
+h2 {
+    background-color: $background_color;
+}
