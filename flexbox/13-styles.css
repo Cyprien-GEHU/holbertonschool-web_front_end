@@ -602,7 +602,7 @@
 
   .post-meta-list [class^="post-meta-"]:last-child {
     border: none;
-    margin-bottom: none;
+    margin-bottom: 3rem;
   }
 
   /* Tag list
@@ -614,7 +614,7 @@
   }
 
   .tag-list li {
-    display: line;
+    display: inline;
   }
 
   .tag-list li::after {
