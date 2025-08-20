@@ -28,8 +28,8 @@
   --color-green: #08805b;
 
   --text-color: var(--color-black);
-  --valid-color: var(var(--color-green));
-  --error-color: var(var(var(--color-red)))
+  --valid-color: var(--color-green);
+  --error-color: var(--color-red);
 
 
   --font-family-base: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -158,12 +158,12 @@ a:active {
 
 .button-primary {
   color: var(--color-white);
-  background-color: var(--color-primary);
+  background: var(--color-primary);
 }
 
 .button-primary:hover {
   color: var(--color-primary);
-  background-color: var(--color-white);
+  background: var(--color-white);
 }
 
 /* Helpers
