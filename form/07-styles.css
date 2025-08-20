@@ -826,7 +826,7 @@ textarea:valid:not(:placeholder-shown) {
 }
 
 .form-search .search-button {
-  display: inline;
+  display: inline-block;
   background: transparent;
   border: 0;
   margin: 0;
@@ -838,8 +838,8 @@ textarea:valid:not(:placeholder-shown) {
   width: 1.5rem;
   height: 1.5rem;
 }
-.form-search[input="search"] {
-  display: inline;
+.form-search input[type="search"] {
+  display: inline-block;
   color: var(--color-white);
   padding-right: 2rem;
   height: 3rem;
@@ -854,7 +854,7 @@ textarea:valid:not(:placeholder-shown) {
   transition: width .4s cubic-bezier(0, 0.795, 0, 1);
 }
 
-.form-search[input="search"]:focus {
+.form-search input[type="search"]:focus {
   position: relative;
   width: 15rem;
   z-index: 1;
