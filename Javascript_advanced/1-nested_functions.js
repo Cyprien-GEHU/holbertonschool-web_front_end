@@ -1,0 +1,17 @@
+// the programme call 3 function in row
+let globalVariable = "Welcome"
+
+function outher() {
+    alert(`${globalVariable}`);
+    let course = "Holberton"
+    function inner () {
+        alert(`${globalVariable} ${course}`)
+        let exclamation = "!"
+        function inception() {
+            alert(`${globalVariable} ${course}${exclamation}`)
+        }
+        inception();
+    }
+    inner();
+}
+outher();
