@@ -1,7 +1,7 @@
 // the programme call 3 function in row
 let globalVariable = "Welcome"
 
-function outher() {
+function outer() {
     alert(`${globalVariable}`);
     let course = "Holberton"
     function inner () {
@@ -14,4 +14,4 @@ function outher() {
     }
     inner();
 }
-outher();
+outer();
