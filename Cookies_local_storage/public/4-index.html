@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>Article - Techium</title>
+        <meta name="description" content="Description of the page less than 150 characters">
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    </head>
+    <body>
+        <!--login of the website-->
+        <div id="logIn">
+            <h2>login to the web site</h2>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="setCookies()">log me in</button>
+        </div>
+        
+    </body>
+    <script>
+        //function to set a cookie
+        function setCookies() {
+            const firstName = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
+            let expireDate = new Date()
+            expireDate.setTime( expireDate.getTime() + (10*24*60*60*1000))
+        
+            Cookies.set("firstname", firstName, {expires: expireDate})
+            Cookies.set("email", email, {expires: expireDate})
+            showWelcomeMessageOrForm();
+        }
+
+        //function to show the cookie
+        function showCookies() {
+            const FirstName = Cookies.get("firstname");
+            const Email = Cookies.get("email");
+
+            let para = document.createElement("p")
+            para.innerHTML= "Email: " + Email + " - Firstname: " + FirstName;
+            document.body.appendChild(para);
+        }
+
+        //function to show form
+        function showForm() {
+            let form = document.getElementById("logIn")
+            console.log(form)
+            form.style.display = "block"
+        }
+
+        //function to hide form
+        function hideForm() {
+            let form = document.getElementById("logIn")
+            form.style.display = "none"
+        }
+
+        //function to remove a cookie
+        function deleteCookiesAndShowForm() {
+            let message = document.getElementById('welcome')
+            if (message) {
+                message.remove()
+            }
+
+            Cookies.remove("firstname")
+            Cookies.remove("email")
+            showForm();
+        }
+
+        //function to remove a cookie
+        function showWelcomeMessageOrForm() {
+            const FirstName = Cookies.get("firstname");
+
+            if (FirstName == "") {
+                showForm();
+            }
+            else {
+                hideForm();
+                let divMessage = document.createElement("div")
+                divMessage.id = 'welcome';
+                let title = document.createElement("h1");
+                title.innerHTML = "Welcome: " + FirstName + " ";
+                let logOut = document.createElement("a");
+                logOut.innerHTML = '(logout)';
+                logOut.href = '#';
+                logOut.style.fontSize= 'italic';
+                logOut.fontWeight = "normal";
+                logOut.marginLeft = "10px"
+                logOut.onclick = function(event) {
+                    event.preventDefault();
+                    deleteCookiesAndShowForm();
+                }
+                title.appendChild(logOut);
+                divMessage.appendChild(title);
+                document.body.appendChild(divMessage);
+            }
+        }
+    </script>
+</html>
