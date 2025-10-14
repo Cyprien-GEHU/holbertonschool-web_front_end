@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>Article - Techium</title>
+        <meta name="description" content="Description of the page less than 150 characters">
+    </head>
+    <body>
+        <!--login of the website-->
+        <div>
+            <h2>login to the web site</h2>
+            <input type="text" id="firstname" placeholder="Firstname">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="setCookies()">log me in</button>
+        </div>
+
+        <!--show the cookies-->
+        <div>
+            <h2>Cookies</h2>
+            <button onclick="showCookies()">show the cookies</button>
+        </div>
+        
+    </body>
+    <script>
+        //function to set a cookie
+        function setCookies() {
+            const firstName = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value;
+            let expireDate = new Date()
+            expireDate.setTime( expireDate.getTime() + (10*24*60*60*1000))
+            document.cookie = "firstname=" + firstName;
+            document.cookie = "email=" + email;
+            document.cookie = "expire=" + expireDate;
+        }
+
+        //function to get the cookie
+        function getCookie(name) {
+            let detailCookie = document.cookie.split(';')
+            for (let count = 0; count <detailCookie.length; count++) {
+                let [element, value] = detailCookie[count].split('=');
+                element = element.trim()
+                if (element === name){
+                    return value
+                }
+                
+            }
+            return ""
+        }
+
+        //function to show the cookie
+        function showCookies() {
+            const FirstName = getCookie("firstname");
+            const Email = getCookie("email");
+
+            let para = document.createElement("p")
+            para.innerHTML= "Email: " + Email + " - Firstname: " + FirstName;
+            document.body.appendChild(para);
+        }
+    </script>
+</html>
