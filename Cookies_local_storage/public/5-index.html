@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>Task 5 - Local Storage</title>
+        <meta name="description" content="Description of the page less than 150 characters">
+    </head>
+    <body>
+        <script>
+            var availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+            if (typeof(Storage) == "undefined") {
+                alert("Sorry, your browser does not support Web storage. Try again with a better one");
+            } else {
+                createStore()
+                displayCart()
+            }
+
+            // add item on the cart
+            function addItemToCart(item) {
+                localStorage.setItem(item, "true")
+            }
+
+            // create a list of item
+            function createStore() {
+                const list = document.createElement("ul")
+                document.body.appendChild(list)
+
+                for (let count = 0; count < availableItems.length; count++) {
+                    let elementList = document.createElement("li");
+                    elementList.onclick = function(event) {
+                        addItemToCart(availableItems[count])
+                    }
+                    elementList.textContent = availableItems[count];
+                    list.appendChild(elementList);
+                }
+            }
+
+            //display cart
+            function displayCart() {
+                let count = 0;
+                for (let i = 0; i < localStorage.length; i++) {
+                    let storageKey = localStorage.key(i);
+                    if (availableItems.includes(storageKey)) {
+                        count ++;
+                    }
+                }
+
+                if (count > 0) {
+                    let para = document.createElement('p');
+                    if (count === 1) {
+                        para.textContent = "You previously had " + count + " item in your cart";
+                    } else {
+                        para.textContent = "You previously had " + count + " items in your cart";
+                    }
+                    document.body.appendChild(para);
+                }
+            }
+        </script>
+    </body>
+</html>
