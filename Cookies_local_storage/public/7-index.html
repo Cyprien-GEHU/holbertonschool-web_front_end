@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <title>Task 6 - session Storage</title>
+        <meta name="description" content="Description of the page less than 150 characters">
+    </head>
+    <body>
+        <script>
+            var availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+            if (typeof(Storage) == "undefined") {
+                alert("Sorry, your browser does not support Web storage. Try again with a better one");
+            } else {
+                createStore()
+                displayCart()
+            }
+
+            // function get cart from the storage
+            function getCartFromStorage(){
+                let cart = sessionStorage.getItem('cart');
+                return cart ? JSON.parse(cart) : {}
+            }
+
+            // add item on the cart
+            function addItemToCart(item) {
+                let sessionCart = getCartFromStorage();
+                sessionCart[item] = (sessionCart[item] || 0 ) + 1;
+                sessionStorage.setItem('cart', JSON.stringify(sessionCart));
+                displayCart()
+            }
+
+            // function to remove item from cart
+            function removeItemfromCart(item) {
+                let sessionCart = getCartFromStorage();
+                delete sessionCart[item]
+                sessionStorage.setItem('cart', JSON.stringify(sessionCart));
+                displayCart()
+            }
+
+            // function to clear cart
+            function clearCart() {
+                sessionStorage.clear();
+                displayCart()
+            }
+
+            // create a list of item for the store
+            function createStore() {
+                let h2 = document.createElement("h2");
+                h2.textContent = "Available products:"
+                document.body.appendChild(h2)
+
+                let ul = document.createElement("ul");
+                document.body.appendChild(ul)
+
+                for (let count = 0; count < availableItems.length; count++) {
+                    let li = document.createElement("li");
+                    li.onclick = function(event) {
+                        addItemToCart(availableItems[count])
+                    }
+                    li.textContent = availableItems[count];
+                    ul.appendChild(li);
+                }
+            }
+
+            //function to display card
+            function displayCart() {
+                let divCart = document.getElementById("listCart")
+                if (!divCart) {
+                    let h2 = document.createElement("h2");
+                    h2.textContent = "Your cart:"
+                    
+                    divCart = document.createElement("div");
+                    divCart.id = "listCart"
+
+                    divCart.appendChild(h2);
+                    document.body.appendChild(divCart);
+                }
+
+                while (divCart.childNodes.length > 1) {
+                    divCart.removeChild(divCart.lastChild);
+                }
+                updateCart()
+            }
+
+            //function update cart
+            function updateCart() {
+                let cart = getCartFromStorage()
+                let divCart = document.getElementById("listCart")
+
+                ul = document.createElement("ul");
+                divCart.appendChild(ul);
+
+                let keys = Object.keys(cart);
+                if (keys.length === 0) {
+                    let li = document.createElement('li');
+                    li.textContent = 'Your cart is empty'
+                    ul.appendChild(li)
+                } else {
+                    let paraClear = document.createElement("li");
+                    paraClear.textContent = "clear my cart";
+                    paraClear.onclick = function () {
+                        clearCart();
+                    }
+                    ul.appendChild(paraClear);
+
+                    for (let count = 0; count < keys.length; count++)
+                    {
+                        let li = document.createElement('li');
+                        let paraText =document.createElement('p')
+                        paraText.textContent = `${keys[count]} x ${cart[keys[count]]} `;
+                        let paraRemove = document.createElement('span');
+                        paraRemove.textContent = '(remove)';
+                        paraRemove.onclick = function() {
+                            removeItemfromCart(keys[count]);
+                        }
+                        paraText.appendChild(paraRemove)
+                        li.appendChild(paraText);
+                        ul.appendChild(li)
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
